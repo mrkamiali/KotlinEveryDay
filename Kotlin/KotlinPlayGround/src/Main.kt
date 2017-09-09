@@ -145,56 +145,79 @@ fun main(args: Array<String>) {
 //        3-> println("3")
 //        4-> println("4")
 //        else -> println("NotMatched")
-    }
+//    }
+
+
+    //Extension
+//    var a1 = Alien()
+//    a1.skills = "Java"
+//    a1.show()
+//
+//    var a2 = Alien()
+//    a2.skills = "Sql"
+//    a2.show()
+//
+//    var a3 = a1.plus(a2)
+//    a3.show()
+
+}
+fun Alien.plus(a: Alien) : Alien {
+    var newAlien = Alien()
+    newAlien.skills = this.skills+" "+a.skills
+    return newAlien
 }
 
-interface Flyable{
-    fun fly(distmiles: Double):Unit
+
+
+interface Flyable {
+    fun fly(distmiles: Double): Unit
 }
-class Bird constructor(val name: String): Flyable {
+
+class Bird constructor(val name: String) : Flyable {
     override fun fly(distmiles: Double) {
         println("$name flies $distmiles miles")
     }
 
 }
 
-class  Dog(name: String,
-           height:Double,
-           weight: Double,
-           val owner: String) : Animal(name,height,weight){
+class Dog(name: String,
+          height: Double,
+          weight: Double,
+          val owner: String) : Animal(name, height, weight) {
 
 }
 
 
-open class Animal(val name:String, var height:Double,
-                  var weight:Double){
+open class Animal(val name: String, var height: Double,
+                  var weight: Double) {
 
     init {
         val regex = Regex(".*\\d+.*")
-        require(!name.matches(regex)){"Animal Name Can't contain Number!"}
-        require(height >0){"Height must be greater then Zero"}
-        require(weight >0){"Weight must be greater then Zero"}
+        require(!name.matches(regex)) { "Animal Name Can't contain Number!" }
+        require(height > 0) { "Height must be greater then Zero" }
+        require(weight > 0) { "Weight must be greater then Zero" }
     }
-    open fun getInfo() : Unit {
+
+    open fun getInfo(): Unit {
         println("$name is $height tall and weights $weight")
     }
 }
 
-fun mathOnList(numList: Array<Int>, myFun: (num:Int) -> Int){
-    for (num1 in numList){
+fun mathOnList(numList: Array<Int>, myFun: (num: Int) -> Int) {
+    for (num1 in numList) {
         println("MathOnList: ${myFun(num1)}")
     }
 }
 
-fun makemathFunc(num1:Int): (Int) -> Int = {num2 -> num1 * num2}
+fun makemathFunc(num1: Int): (Int) -> Int = { num2 -> num1 * num2 }
 
 //tail Recursion
 fun facto(x: Int): Int {
     tailrec fun factTail(y: Int, z: Int): Int {
-        if (y == 0 ) return z
-        else return factTail(y-1,y*z)
+        if (y == 0) return z
+        else return factTail(y - 1, y * z)
     }
-    return  factTail(x,1)
+    return factTail(x, 1)
 }
 
 fun retrnTwoValues(num: Int): Pair<Int, Int> {
