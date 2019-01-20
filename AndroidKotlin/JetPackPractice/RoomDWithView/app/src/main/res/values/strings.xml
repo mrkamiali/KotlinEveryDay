@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RoomDWithView</string>
+
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+</resources>
